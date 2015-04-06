@@ -36,7 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis'
+    'django.contrib.gis',
+    'geodjango.world'
+    
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,8 +61,9 @@ WSGI_APPLICATION = 'TripDoneRight.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pgsql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+         'NAME': 'geodjango',
+         'USER': 'geo',
     }
 }
 

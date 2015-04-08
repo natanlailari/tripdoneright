@@ -1,14 +1,17 @@
 <!DOCTYPE html>
+{% load staticfiles %} <!-- New line -->
+
 <html>
 
     <head>
-        <title>Rango</title>
+        <title>Trip Done Right</title>
     </head>
 
     <body>
         <h1>Rango says...</h1>
         hello world! <strong>{{ boldmessage }}</strong><br />
         <a href="/rango/about/">About</a><br />
+        <img src="{% static "images/world-map.gif" %}" alt="world map" /> <!-- New line -->
     </body>
 
 </html>

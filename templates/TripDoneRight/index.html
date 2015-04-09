@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-{% load staticfiles %} <!-- New line -->
-
+{% load staticfiles %}
+{% load leaflet_tags %}
 <html>
 
     <head>
+        {% leaflet_js %}
+        {% leaflet_css %}
         <title>Trip Done Right</title>
     </head>
 
     <body>
         <h1>Rango says...</h1>
+        {% leaflet_map "main" callback="main_map_init" %}
+        <script type="text/javascript">
+        function main_map_init (map, options) {
+            // Use Leaflet API here
+        }
+        </script>
         hello world! <strong>{{ boldmessage }}</strong><br />
         <a href="/rango/about/">About</a><br />
         <img src="{% static "images/world-map.gif" %}" alt="world map" /> <!-- New line -->
     </body>
-
 </html>

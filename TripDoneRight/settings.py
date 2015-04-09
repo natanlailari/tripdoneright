@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'geodjango.world'
+    'geodjango.world',
+    'leaflet'
 
 )
 

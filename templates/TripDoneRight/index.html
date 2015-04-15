@@ -14,6 +14,15 @@
         {% leaflet_map "main" callback="main_map_init" %}
         <script type="text/javascript">
 
+        function onEachFeature(feature, layer) {
+            // does this feature have a property named popupContent?
+            if (feature.properties && feature.properties.popupContent) {
+                layer.bindPopup(feature.properties.popupContent);
+            }
+        }
+
+
+
         function main_map_init (map, options) {
             var geojsonFeature = {
             "type": "Feature",
@@ -39,8 +48,19 @@
                 "coordinates": [-75.193214,39.952219]
             }
         };
-            L.geoJson(geojsonFeature).addTo(map);
-            L.geoJson(geojsonFeature2).addTo(map);
+            var myLines = [{
+                "type": "LineString",
+                "coordinates": [[-104.99404, 39.75621], [-75.193214,39.952219]]
+            }];
+
+            var myStyle = {
+                "color": "#ff7800",
+                "weight": 5,
+                "opacity": 0.65
+            };
+            L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}).addTo(map);
+            L.geoJson(geojsonFeature2, {onEachFeature: onEachFeature}).addTo(map);
+            L.geoJson(myLines, {style: myStyle}).addTo(map);
         }
         </script>
         hello world! <strong>{{ boldmessage }}</strong><br />

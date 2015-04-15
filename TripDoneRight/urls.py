@@ -9,7 +9,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'TripDoneRight.views.home', name='home')
+    url(r'^$', 'TripDoneRight.views.home', name='home'),
+    url(r'^mushroomspot_list', 'TripDoneRight.views.mushroomspot', name='mushroomspot_list')
 )
 
 if settings.DEBUG:

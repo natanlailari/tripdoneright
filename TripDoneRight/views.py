@@ -11,3 +11,6 @@ def home(request):
     # Note that the first parameter is the template we wish to use.
 
     return render(request, 'TripDoneRight/index.html', context_dict)
+
+def mushroomspot(request):
+    return render(request, 'TripDoneRight/mushroomspot_list.html')

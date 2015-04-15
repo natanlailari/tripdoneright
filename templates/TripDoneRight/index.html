@@ -13,8 +13,34 @@
         <h1>Rango says...</h1>
         {% leaflet_map "main" callback="main_map_init" %}
         <script type="text/javascript">
+
         function main_map_init (map, options) {
-            // Use Leaflet API here
+            var geojsonFeature = {
+            "type": "Feature",
+            "properties": {
+                "name": "Coors Field",
+                "amenity": "Baseball Stadium",
+                "popupContent": "This is where the Rockies play!"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-104.99404, 39.75621]
+            }
+        };
+            var geojsonFeature2 = {
+            "type": "Feature",
+            "properties": {
+                "name": "UPenn",
+                "amenity": "University",
+                "popupContent": "This is where you learn"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-75.193214,39.952219]
+            }
+        };
+            L.geoJson(geojsonFeature).addTo(map);
+            L.geoJson(geojsonFeature2).addTo(map);
         }
         </script>
         hello world! <strong>{{ boldmessage }}</strong><br />

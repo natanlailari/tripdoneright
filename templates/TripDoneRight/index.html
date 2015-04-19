@@ -21,9 +21,7 @@
             }
         }
 
-        function onClick(e) {alert(this.getLatLng());
-            console.log("onClick");
-        }
+
 
         function main_map_init (map, options) {
             var geojsonFeature = {
@@ -63,7 +61,28 @@
             L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}).addTo(map);
             L.geoJson(geojsonFeature2, {onEachFeature: onEachFeature}).addTo(map);
             L.geoJson(myLines, {style: myStyle}).addTo(map);
+            function onMapClick(e) {
+                console.log(typeof e.latlng);
+                console.log(typeof e);
+                var clickFeature = {
+                "type": "Feature",
+                "properties": {
+                "name": "Clicked",
+                "amenity": "None",
+                "popupContent": "You clicked here"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [e.latlng.lng, e.latlng.lat]
+            }
+        };
+                alert("You clicked the map at " + e.latlng);
+                L.geoJson(clickFeature, {onEachFeature: onEachFeature}).addTo(map);
+            }
+            map.on('click', onMapClick);
+
         }
+
         </script>
         hello world! <strong>{{ boldmessage }}</strong><br />
         <a href="/rango/about/">About</a><br />

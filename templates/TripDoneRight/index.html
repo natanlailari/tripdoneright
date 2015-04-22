@@ -58,10 +58,10 @@
                 "weight": 3,
                 "opacity": 0.70
             };
-            var last_point = [-75.193214,39.952219];
-            L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}).addTo(map);
-            L.geoJson(geojsonFeature2, {onEachFeature: onEachFeature}).addTo(map);
-            L.geoJson(myLines, {style: myStyle}).addTo(map);
+            var last_point = 0;
+            //L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}).addTo(map);
+            //L.geoJson(geojsonFeature2, {onEachFeature: onEachFeature}).addTo(map);
+            //L.geoJson(myLines, {style: myStyle}).addTo(map);
             function onMapClick(e) {
                 var clickFeature = {
                 "type": "Feature",
@@ -74,17 +74,22 @@
                 "type": "Point",
                 "coordinates": [e.latlng.lng, e.latlng.lat]
             }
-        };
+        };      
+            if(last_point === 0){
+                    last_point = [e.latlng.lng, e.latlng.lat];
+                }
+            else {
                 var clickLine = [{
                 "type": "LineString",
                 "coordinates": [last_point, [e.latlng.lng, e.latlng.lat]]
             }];
-                last_point = [e.latlng.lng, e.latlng.lat];
-                L.geoJson(clickLine, {style: myStyle}).addTo(map);
+            last_point = [e.latlng.lng, e.latlng.lat];
+            L.geoJson(clickLine, {style: myStyle}).addTo(map);
+        }
 
-                L.geoJson(clickFeature, {onEachFeature: onEachFeature}).addTo(map);
-            }
-            map.on('click', onMapClick);
+        L.geoJson(clickFeature, {onEachFeature: onEachFeature}).addTo(map);
+        }
+        map.on('click', onMapClick);
 
         }
 

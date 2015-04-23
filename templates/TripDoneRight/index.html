@@ -63,12 +63,13 @@
             //L.geoJson(geojsonFeature2, {onEachFeature: onEachFeature}).addTo(map);
             //L.geoJson(myLines, {style: myStyle}).addTo(map);
             function onMapClick(e) {
+                content = prompt("name of location?");
                 var clickFeature = {
                 "type": "Feature",
                 "properties": {
                 "name": "Clicked",
                 "amenity": "None",
-                "popupContent": "You clicked here"
+                "popupContent": content
             },
             "geometry": {
                 "type": "Point",
@@ -92,7 +93,6 @@
         map.on('click', onMapClick);
 
         }
-
         </script>
         hello world! <strong>{{ boldmessage }}</strong><br />
         <a href="/rango/about/">About</a><br />

@@ -1,6 +1,8 @@
 from django.contrib.gis.db import models
 
-# Create your models here.
+from djgeojson.fields import PointField
+
+from django.contrib.auth.models import User
 
 class WorldBorder(models.Model):
     # Regular Django fields corresponding to the attributes in the
@@ -26,3 +28,17 @@ class WorldBorder(models.Model):
     # Returns the string representation of the model.
     def __str__(self):              # __unicode__ on Python 2
         return self.name
+
+# class MushroomSpot(models.Model):
+#     geom = PointField()
+
+class UserProfile(models.Model):
+    # This line is required. Links UserProfile to a User model instance.
+    user = models.OneToOneField(User)
+
+    # The additional attributes we wish to include.
+    website = models.URLField()
+
+    # Override the __unicode__() method to return out something meaningful!
+    def __unicode__(self):
+        return self.user.username
